@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Tracker</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       HEADER — sticky, progress bar + tab nav
+  ══════════════════════════════════════════════ -->
+  <header>
+    <div class="header-top">
+      <div class="logo">health<span>.</span>track</div>
+      <div class="date-badge" id="dateBadge"></div>
+    </div>
+
+    <div class="progress-info">
+      <span>Today's Progress</span>
+      <span><strong id="doneCount">0</strong> / <span id="totalCount">0</span> tasks</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+
+    <nav class="nav-tabs" role="tablist">
+      <button class="tab-btn active" data-tab="today"     onclick="UI.switchTab('today')"    >Today</button>
+      <button class="tab-btn"        data-tab="nutrition" onclick="UI.switchTab('nutrition')" >Nutrition</button>
+      <button class="tab-btn"        data-tab="exercise"  onclick="UI.switchTab('exercise')"  >Exercise</button>
+      <button class="tab-btn"        data-tab="avoid"     onclick="UI.switchTab('avoid')"     >Avoid</button>
+      <button class="tab-btn"        data-tab="stats"     onclick="UI.switchTab('stats')"     >Stats</button>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════════════
+       MAIN — tab panels (filled by render.js)
+  ══════════════════════════════════════════════ -->
+  <main>
+    <div class="section active" id="tab-today"     role="tabpanel"></div>
+    <div class="section"        id="tab-nutrition" role="tabpanel"></div>
+    <div class="section"        id="tab-exercise"  role="tabpanel"></div>
+    <div class="section"        id="tab-avoid"     role="tabpanel"></div>
+    <div class="section"        id="tab-stats"     role="tabpanel"></div>
+  </main>
+
+  <!-- ══════════════════════════════════════════════
+       TOAST
+  ══════════════════════════════════════════════ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ══════════════════════════════════════════════
+       BOTTOM NAV
+  ══════════════════════════════════════════════ -->
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="bnav-btn active" id="bnav-today"     onclick="UI.switchTab('today')"    >
+      <span class="ms">checklist</span>TODAY
+    </button>
+    <button class="bnav-btn"        id="bnav-nutrition" onclick="UI.switchTab('nutrition')" >
+      <span class="ms">nutrition</span>FOOD
+    </button>
+    <button class="bnav-btn"        id="bnav-exercise"  onclick="UI.switchTab('exercise')"  >
+      <span class="ms">directions_walk</span>MOVE
+    </button>
+    <button class="bnav-btn"        id="bnav-avoid"     onclick="UI.switchTab('avoid')"     >
+      <span class="ms">block</span>AVOID
+    </button>
+    <button class="bnav-btn"        id="bnav-stats"     onclick="UI.switchTab('stats')"     >
+      <span class="ms">bar_chart</span>STATS
+    </button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+       SCRIPTS — data first, then modules, then app
+  ══════════════════════════════════════════════ -->
+  <script src="data/tasks.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

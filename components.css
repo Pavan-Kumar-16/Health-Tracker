@@ -1,0 +1,158 @@
+/* ============================================================
+   components.css — Cards, tags, info-cards, section labels
+   ============================================================ */
+
+/* ── Layout ── */
+main {
+  padding: 20px 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section        { display: none; }
+.section.active { display: block; }
+
+/* ── Section label ── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 24px 0 10px;
+}
+.section-label:first-child { margin-top: 0; }
+.section-label .ms         { font-size: 15px; }
+
+/* ── Checklist card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s, background 0.2s;
+}
+.card:hover { border-color: #3d4f63; }
+
+.card-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Check circle */
+.check-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  background: transparent;
+}
+.check-circle .ms {
+  font-size: 13px;
+  display: none;
+  color: #fff;
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 20;
+}
+
+/* Card icon box */
+.card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+.card-icon .ms { font-size: 20px; }
+
+/* Card text */
+.card-body   { flex: 1; min-width: 0; }
+.card-title  { font-size: 14px; font-weight: 500; line-height: 1.3; }
+.card-sub    { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+
+/* Checked state */
+.card.checked {
+  border-color: var(--green-dim);
+  background: #111b14;
+}
+.card.checked .check-circle {
+  background: var(--green);
+  border-color: var(--green);
+}
+.card.checked .check-circle .ms { display: block; }
+.card.checked .card-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+.card.checked .card-icon { opacity: 0.4; }
+
+/* ── Tags ── */
+.tag {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-lg);
+  letter-spacing: 0.5px;
+  font-family: 'Syne', sans-serif;
+}
+.tag-red    { background: var(--red-dim);    color: var(--red);    border: 1px solid #5a1c1a; }
+.tag-yellow { background: var(--yellow-dim); color: var(--yellow); border: 1px solid #4a3508; }
+.tag-blue   { background: var(--blue-dim);   color: var(--blue);   border: 1px solid #0d3a6e; }
+.tag-green  { background: var(--green-dim);  color: var(--green);  border: 1px solid #1e4d28; }
+.tag-orange { background: var(--orange-dim); color: var(--orange); border: 1px solid #4a2a00; }
+.tag-purple { background: var(--purple-dim); color: var(--purple); border: 1px solid #3a1e66; }
+
+/* ── Info cards (avoid / reminder / limit) ── */
+.info-card {
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.info-card > .ms     { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.info-card-title     { font-size: 14px; font-weight: 500; }
+.info-card-sub       { font-size: 12px; margin-top: 2px; line-height: 1.4; }
+
+.info-card.red    { background: var(--red-dim);    border: 1px solid #5a1c1a; }
+.info-card.red    > .ms          { color: var(--red); }
+.info-card.red    .info-card-title { color: #ffb3b0; }
+.info-card.red    .info-card-sub   { color: #c06060; }
+
+.info-card.yellow { background: var(--yellow-dim); border: 1px solid #4a3508; }
+.info-card.yellow > .ms          { color: var(--yellow); }
+.info-card.yellow .info-card-title { color: #f0c060; }
+.info-card.yellow .info-card-sub   { color: #9a6a20; }
+
+.info-card.blue   { background: var(--blue-dim);   border: 1px solid #0d3a6e; }
+.info-card.blue   > .ms          { color: var(--blue); }
+.info-card.blue   .info-card-title { color: #90c8ff; }
+.info-card.blue   .info-card-sub   { color: #4a7aaa; }
+
+/* ── Pop animation ── */
+@keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.07); }
+  100% { transform: scale(1); }
+}
+.card.pop { animation: pop 0.25s ease; }
